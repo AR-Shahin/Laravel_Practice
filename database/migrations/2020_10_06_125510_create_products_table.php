@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateHudoFieldCat extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class UpdateHudoFieldCat extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-             $table->renameColumn('hudo', 'to');
-            $table->string('cat_name', 50)->nullable()->change();
-             $table->dropColumn('votes');
+        Schema::create('products', function (Blueprint $table) {
+            $table->id('pro_id');
+            $table->string('pro_name',50);
+            $table->integer('cat_id');
+            $table->string('status',2);
+            $table->timestamps();
         });
     }
 
@@ -27,8 +29,6 @@ class UpdateHudoFieldCat extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-           
-        });
+        Schema::dropIfExists('products');
     }
 }

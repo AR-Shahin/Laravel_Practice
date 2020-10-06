@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\Site;
-//use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DBcontroller;
 
 
 
@@ -39,3 +39,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/user','UserController@index');
 });
 
+Route::get('display',[DBcontroller::class, 'display']);
+Route::get('add',[DBcontroller::class, 'insert']);
